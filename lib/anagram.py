@@ -1,18 +1,14 @@
 class Anagram:
     def __init__(self, word):
-        self.word = word
+        self.word = word.lower()
 
     def match(self, words):
         anagrams = []
-        sorted_word = sorted(self.word.lower())
-        
-        for word in words:
-            # Ignore identical words
-            if word.lower() == self.word.lower():
-                continue
 
-            # Check if the sorted characters of the word match the sorted characters of self.word
-            if sorted(word.lower()) == sorted_word:
+        for word in words:
+            lowercase_word = word.lower()
+
+            if sorted(lowercase_word) == sorted(self.word):
                 anagrams.append(word)
 
         return anagrams
